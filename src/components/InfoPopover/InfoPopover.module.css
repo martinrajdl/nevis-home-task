@@ -1,0 +1,57 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 24px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline dotted var(--muted);
+  text-underline-offset: 4px;
+}
+.trigger:hover {
+  background: #eee9f5;
+}
+.trigger:focus-visible {
+  outline-offset: 2px;
+}
+.indicator {
+  flex: 0 0 10px;
+  width: 10px;
+  height: 10px;
+  color: var(--accent);
+}
+.panel {
+  position: fixed;
+  z-index: 10;
+  width: min(272px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 4px 20px #14141314;
+  color: #141413;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .indicator {
+    opacity: 0;
+  }
+  .trigger:hover .indicator,
+  .trigger:focus .indicator,
+  .trigger[aria-expanded='true'] .indicator {
+    opacity: 1;
+  }
+}

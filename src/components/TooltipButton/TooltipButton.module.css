@@ -1,0 +1,18 @@
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  width: max-content;
+  max-width: min(240px, calc(100vw - 24px));
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: 0 2px 8px #14141314;
+  color: #141413;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

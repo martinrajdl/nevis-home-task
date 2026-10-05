@@ -1,0 +1,109 @@
+.section {
+  --tree-table-min-width: 1160px;
+  --tree-table-label-width: 288px;
+  margin-top: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: clip;
+}
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chartAction {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+}
+.chartAction:hover,
+.chartAction[aria-pressed='true'] {
+  background: #e7ddf5;
+  color: var(--focus);
+}
+.avatar,
+.avatarFallback {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatarFallback {
+  display: grid;
+  place-items: center;
+  background: #f0e9e7;
+  font-size: 10px;
+}
+.mobileHint {
+  display: none;
+}
+.explanationTitle {
+  margin: 0 0 12px;
+}
+.totals {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.totals > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 6px;
+}
+.totals dd {
+  flex-shrink: 0;
+  margin: 0;
+}
+.explanationNote {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+@media (max-width: 640px) {
+  .section {
+    --tree-table-min-width: 776px;
+    --tree-table-label-width: 168px;
+    margin-top: 12px;
+  }
+  .year {
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .avatar,
+  .avatarFallback {
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+  }
+  .mobileHint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin: 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .chartAction {
+    opacity: 0;
+  }
+  .section tr:hover .chartAction,
+  .section tr:focus-within .chartAction,
+  .section tr[data-selected] .chartAction {
+    opacity: 1;
+  }
+}

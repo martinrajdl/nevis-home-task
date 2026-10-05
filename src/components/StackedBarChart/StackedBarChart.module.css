@@ -1,0 +1,148 @@
+.card {
+  position: relative;
+  margin: 0;
+  padding: 24px 16px 16px;
+  min-width: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.plotViewport {
+  position: relative;
+}
+.keyboardHint {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--focus);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--focus);
+  font-size: 12px;
+  pointer-events: none;
+}
+.plotViewport:has([role='application']:focus-visible):not(:has(:global(.recharts-tooltip-cursor))) .keyboardHint {
+  display: block;
+}
+.tooltipViewport {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6d5d1 transparent;
+}
+.card .scroll:focus,
+.card .plot :focus {
+  outline: none;
+}
+.plot:has([role='application']:focus-visible) :global(.recharts-tooltip-cursor) {
+  stroke: var(--focus);
+  stroke-width: 2px;
+}
+.plot {
+  height: 358px;
+  min-width: var(--plot-min-width);
+}
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--muted);
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.swatch {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(280px, 100%);
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px #14141314;
+  font-size: 12px;
+}
+.tooltipLabel {
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+.tooltip dl {
+  margin: 0;
+}
+.tooltip dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 8px;
+}
+.tooltip dt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.tooltip dd {
+  margin: 0;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.total {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+@media (max-width: 640px) {
+  .card {
+    padding: 16px 12px 12px;
+  }
+  .plot {
+    height: 212px;
+  }
+  .tooltip {
+    padding: 12px;
+    line-height: 16px;
+  }
+  .tooltipLabel {
+    margin-bottom: 8px;
+  }
+  .tooltip dl > div {
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .total {
+    padding-top: 6px;
+  }
+  .legend {
+    margin-top: 12px;
+    gap: 8px 12px;
+    font-size: 11px;
+  }
+}

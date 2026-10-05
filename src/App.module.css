@@ -1,0 +1,118 @@
+.page {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  min-height: 44px;
+}
+.header h1 {
+  margin: 0;
+  font-family: 'Inter Display', Inter, sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 44px;
+}
+.loadingChart {
+  height: 430px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: flex-end;
+  gap: 2%;
+  padding: 52px 36px;
+}
+.loadingChart span {
+  flex: 1;
+  background: #f0ecf6;
+  border-radius: 4px 4px 0 0;
+  animation: pulse 1.6s ease-in-out infinite alternate;
+}
+.loadingTable {
+  background: var(--surface);
+  border-radius: var(--radius);
+  margin-top: 16px;
+  padding: 12px 24px;
+}
+.loadingTable span {
+  display: block;
+  height: 56px;
+  border-bottom: 1px solid var(--line);
+}
+.loadingTable span:last-child {
+  border: 0;
+}
+.error {
+  background: var(--surface);
+  border-radius: var(--radius);
+  min-height: 416px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+}
+.error h2 {
+  font-size: 20px;
+  font-weight: 550;
+  margin: 0 0 12px;
+}
+.error p {
+  color: var(--muted);
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.retry {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  padding: 12px 22px;
+  min-height: 44px;
+  margin-top: 8px;
+}
+.retry:hover {
+  background: #614093;
+}
+@keyframes pulse {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 640px) {
+  .page {
+    padding: 16px 12px;
+  }
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    min-height: 36px;
+  }
+  .header h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .loadingChart {
+    height: 268px;
+    padding: 32px 20px;
+  }
+  .loadingTable {
+    margin-top: 12px;
+    padding: 8px 12px;
+  }
+  .loadingTable span {
+    height: 44px;
+  }
+}

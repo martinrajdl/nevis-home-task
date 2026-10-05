@@ -1,0 +1,183 @@
+.scroll {
+  position: relative;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6d5d1 transparent;
+  border-radius: var(--radius);
+  background: var(--surface);
+  container-type: inline-size;
+  --current-label-width: var(--tree-table-label-width, 288px);
+  --current-min-width: var(--tree-table-min-width, 640px);
+  --trailing-space: 16px;
+}
+.scroll:focus-visible {
+  outline-offset: -3px;
+}
+.table {
+  width: 100%;
+  min-width: var(--current-min-width);
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: 14px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.nameColumn {
+  width: var(--current-label-width);
+}
+.valueColumn {
+  width: calc(
+    (max(100cqw, var(--current-min-width)) - var(--current-label-width) - var(--trailing-space)) / var(--column-count)
+  );
+}
+.valueColumn:last-child {
+  width: calc(
+    (max(100cqw, var(--current-min-width)) - var(--current-label-width) - var(--trailing-space)) /
+      var(--column-count) + var(--trailing-space)
+  );
+}
+.table th,
+.table td {
+  height: 56px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+  font-weight: 400;
+}
+.table thead th {
+  color: var(--muted);
+  padding-top: 4px;
+  font-variant-numeric: normal;
+}
+.table th:last-child,
+.table td:last-child:not(.emptyCell) {
+  padding-right: 24px;
+}
+.table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.table tbody tr {
+  --row-background: var(--surface);
+  background: var(--row-background);
+  cursor: default;
+}
+.table tbody tr[data-expandable]:hover,
+.table tbody tr[data-expandable]:focus-within {
+  --row-background: #f6f6f6;
+}
+.table tbody tr[data-expandable] {
+  cursor: pointer;
+}
+.table tbody tr[data-selected],
+.table tbody tr[data-selected]:hover,
+.table tbody tr[data-selected]:focus-within {
+  --row-background: #f3eff9;
+}
+.table .rowHeader,
+.table .nameHeader {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 0;
+  background: var(--row-background, var(--surface));
+}
+.rowHeading {
+  display: flex;
+  align-items: center;
+}
+.rowActions {
+  flex: 0 0 auto;
+  padding-right: 8px;
+}
+.rowLabel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: 55px;
+  gap: 8px;
+  padding: 0 8px 0 calc(16px + var(--depth) * 28px);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-weight: 400;
+}
+.rowLabel:focus-visible {
+  outline-offset: -3px;
+}
+.indicator {
+  display: flex;
+  flex: 0 0 16px;
+  width: 16px;
+}
+.chevron {
+  display: block;
+  transition: transform 140ms ease;
+}
+.chevron[data-expanded] {
+  transform: rotate(90deg);
+}
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.table td.emptyCell {
+  height: auto;
+  padding: 0;
+  white-space: normal;
+}
+.emptyState {
+  position: sticky;
+  left: 0;
+  width: 100cqw;
+  max-width: 100%;
+  min-height: 56px;
+  padding: 16px 24px 16px calc(40px + var(--depth) * 28px);
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .scroll {
+    --trailing-space: 8px;
+  }
+  .table {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .table th,
+  .table td {
+    height: 44px;
+    padding: 0 6px;
+  }
+  .table th:last-child,
+  .table td:last-child:not(.emptyCell) {
+    padding-right: 14px;
+  }
+  .rowLabel {
+    height: 43px;
+    gap: 4px;
+    padding-left: calc(8px + var(--depth) * 8px);
+  }
+  .indicator {
+    width: 12px;
+    flex-basis: 12px;
+  }
+  .chevron {
+    width: 12px;
+    height: 12px;
+  }
+  .label {
+    gap: 4px;
+  }
+  .emptyState {
+    min-height: 44px;
+    padding: 12px 12px 12px calc(24px + var(--depth) * 8px);
+    font-size: 12px;
+  }
+}
